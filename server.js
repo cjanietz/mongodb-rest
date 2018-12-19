@@ -23,7 +23,12 @@ var server = null;
 
 module.exports = {
     startServer,
-    stopServer
+    stopServer,
+    applyToServer
+}
+
+function applyToServer(app) {
+    init(app, config);
 }
 
 /**
@@ -102,14 +107,3 @@ function run(app, config, onStarted) {
         server = app.listen(port, host, start);
     }
 }
-
-/**
- * Auto start server when run as 'node server.js'
- */
-+function() {
-    const autoStart =
-        process.argv.length >= 2 &&
-        process.argv[1].indexOf('server.js') != -1;
-
-    if (autoStart) module.exports.startServer();
-}();
