@@ -27,7 +27,8 @@ module.exports = {
     applyToServer
 }
 
-function applyToServer(app) {
+function applyToServer(app, customConfig) {
+    const config = resolveConfig.with(customConfig);
     init(app, config);
 }
 
